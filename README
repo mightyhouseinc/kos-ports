@@ -33,9 +33,9 @@ toolchain. Here's the list:
    might happen to have (and an example of using wget).
 2. Git and SVN are required for some of the ports in the ports collection.
 3. In order to validate downloaded source packages, Python is needed. Python
-   2.7.x has been tested and found working. If you don't have Python, please
-   edit the config.mk file to disable source package validation (or, better yet,
-   install Python).
+   2.7.x and 3.7.x have been tested and found working. If you don't have
+   Python, please edit the config.mk file to disable source package validation
+   (or, better yet, install Python).
 4. A relatively sane *nix shell and make program are also required. Everything's
    been tested with Bash and GNU Make.
 
