@@ -18,6 +18,8 @@ uninstall:
 			fi ; \
 		elif [ -n "${HDR_INSTDIR}" ] ; then \
 			rm -f ${KOS_PORTS}/include/${HDR_INSTDIR} ; \
+		elif [ -n "${HDR_FULLDIR}" ] ; then \
+			rm -f ${KOS_PORTS}/include/${HDR_FULLDIR} ; \
 		else \
 			rm -f ${KOS_PORTS}/include/${PORTNAME} ; \
 		fi ; \

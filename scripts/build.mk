@@ -49,8 +49,10 @@ force-install: build-stamp $(PREINSTALL)
 		cd ${PORTNAME}-${PORTVERSION} ; \
 	else \
 		cd ${DISTFILE_DIR} ; \
-	fi ;\
-	cp ${TARGET} ../../inst/lib ; \
+	fi ; \
+	if [ -z "${NOCOPY_TARGET}" ] ; then \
+		cp ${TARGET} ../../inst/lib ; \
+	fi ; \
 	for _file in ${INSTALLED_HDRS}; do \
 		cp $$_file ../../inst/include ; \
 	done ; \
@@ -70,6 +72,9 @@ force-install: build-stamp $(PREINSTALL)
 	elif [ -n "${HDR_INSTDIR}" ] ; then \
 		rm -f ${KOS_PORTS}/include/${HDR_INSTDIR} ; \
 		ln -s ${KOS_PORTS}/${PORTNAME}/inst/include ${KOS_PORTS}/include/${HDR_INSTDIR} ; \
+	elif [ -n "${HDR_FULLDIR}" ] ; then \
+		rm -f ${KOS_PORTS}/include/${HDR_FULLDIR} ; \
+		ln -s ${KOS_PORTS}/${PORTNAME}/inst/include/${HDR_FULLDIR} ${KOS_PORTS}/include/${HDR_FULLDIR} ; \
 	else \
 		rm -f ${KOS_PORTS}/include/${PORTNAME} ; \
 		ln -s ${KOS_PORTS}/${PORTNAME}/inst/include ${KOS_PORTS}/include/${PORTNAME} ; \
