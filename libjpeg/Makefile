@@ -1,6 +1,6 @@
 # Port Metadata
 PORTNAME =        libjpeg
-PORTVERSION =     9.4
+PORTVERSION =     9.5
 
 MAINTAINER =      Lawrence Sebald <ljsebald@users.sourceforge.net>
 LICENSE =         IJG license (see README in the source distribution!)
