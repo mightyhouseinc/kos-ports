@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # kos-ports ##version##
 #
 # scripts/validate_dist.py

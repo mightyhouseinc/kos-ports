@@ -21,3 +21,6 @@ VALIDATE_DISTFILES = true
 
 # Autotools host triple. This should generally be the same as the KOS host.
 AUTOTOOLS_HOST = $(KOS_CC_PREFIX)
+
+# Command to run python
+PYTHON_CMD = python3
