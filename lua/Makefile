@@ -1,8 +1,8 @@
 # Port Metadata
 PORTNAME = 			lua
-PORTVERSION = 		5.3.5
+PORTVERSION = 		5.4.4
 
-MAINTAINER =        Nobody
+MAINTAINER =        Falco Girgis (GyroVorbis)
 LICENSE =           MIT License (http://opensource.org/licenses/MIT)
 SHORT_DESC =        Embeddable scripting language
 
