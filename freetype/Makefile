@@ -25,7 +25,7 @@ DISTFILE_DIR =      freetype-${PORTVERSION}
 
 
 # Autotools setup work.
-CONFIGURE_ARGS =    --disable-mmap --with-brotli=no
+CONFIGURE_ARGS =    --disable-mmap --with-brotli=no --with-harfbuzz=no
 CONFIGURE_DEFS =    ZLIB_CFLAGS=-I${KOS_PORTS}/include/zlib ZLIB_LIBS=-lz \
                     BZIP2_CFLAGS=-I${KOS_PORTS}/include/bzlib BZIP2_LIBS=-lbz2 \
                     LIBPNG_CFLAGS="-I${KOS_PORTS}/include/png -std=gnu11" LIBPNG_LIBS=-lpng
