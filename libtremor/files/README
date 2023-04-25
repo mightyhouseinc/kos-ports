@@ -6,5 +6,5 @@ a bit less buggy on KOS (and SH-4 GCC ;) since it's less complex.
 To use it, you should basically just link -ltremor instead of
 -loggvorbisplay. Everything else should basically work as-is.
 
-Dan Potter
+Megan Potter
 

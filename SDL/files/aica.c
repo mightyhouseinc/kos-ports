@@ -1,7 +1,7 @@
 /* This file is part of the Dreamcast function library.
  * Please see libdream.c for further details.
  *
- * (c)2000 Dan Potter
+ * (c)2000 Megan Potter
  * modify BERO
  * modified by Lawrence Sebald <bluecrab2887@netscape.net>
  */

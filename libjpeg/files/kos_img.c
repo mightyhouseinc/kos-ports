@@ -1,7 +1,7 @@
 /* KallistiOS ##version##
 
    kos_img.c
-   (c)2002 Dan Potter
+   (c)2002 Megan Potter
 
    Based on Andrew's jpeg_to_texture routine, but loads into a
    KOS plat-independent image.
