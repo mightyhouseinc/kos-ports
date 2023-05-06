@@ -1,7 +1,7 @@
 /* KallistiOS ##version##
 
    jpeg.h
-   (c)2001 Dan Potter
+   (c)2001 Megan Potter
 */
 
 #ifndef __JPEG_JPEG_H
