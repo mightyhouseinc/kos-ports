@@ -1,0 +1,7 @@
+LibYAML is a C library for parsing and emitting YAML.
+
+YAML is a human-readable data serialization format designed to replace older
+formats such as ini files. LibYAML implements full support for both parsing and
+emitting YAML 1.1 documents.
+
+URL: https://pyyaml.org/wiki/LibYAML
