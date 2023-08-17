@@ -1,0 +1,3 @@
+ALdc is an OpenAL 1.1 implementation for KOS.  
+
+It implements 3D positional audio for sound effects and offloads all of the panning and mixing to the AICA.
