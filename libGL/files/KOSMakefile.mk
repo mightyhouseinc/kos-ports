@@ -1,8 +1,18 @@
 TARGET = libGL.a
-OBJS =  gl-rgb.o gl-fog.o gl-sh4-light.o gl-light.o gl-clip.o gl-clip-arrays.o
-OBJS += gl-arrays.o gl-pvr.o gl-matrix.o gl-api.o gl-texture.o glu-texture.o
-OBJS += gl-framebuffer.o gl-cap.o gl-error.o
+OBJS =  containers/aligned_vector.o containers/named_array.o containers/stack.o
+OBJS += GL/draw.o GL/error.o GL/flush.o GL/fog.o GL/framebuffer.o GL/glu.o
+OBJS += GL/immediate.o GL/lighting.o GL/matrix.o GL/state.o GL/texture.o GL/util.o
+OBJS += GL/alloc/alloc.o version.o GL/platforms/sh4.o
 
-KOS_CFLAGS += -Iinclude -ffast-math -O3 -DBUILD_LIBGL
+KOS_CFLAGS += -DBACKEND_KOSPVR
+
+GLDC_VERSION=$(shell git describe --abbrev=4 --dirty --always --tags)
+
+defaultall: version $(OBJS)
+
+# Generate version
+version:
+	@cp GL/version.c.in version.c
+	@sed -i "s/@GLDC_VERSION@/${GLDC_VERSION}/g" version.c
 
 include ${KOS_PORTS}/scripts/lib.mk

@@ -1,6 +1,6 @@
-KallistiGL is an OpenGL (tm) like library written for KOS. The current version
-of this library implements much of version 1.1 of the OpenGL specification and
-some additional functionality beyond that.
+GLdc is a partial implementation of OpenGL 1.2 for the Sega Dreamcast for use
+with the KallistiOS SDK. The aim is to implement as much of OpenGL 1.2 as
+possible, and to add additional features via extensions.
 
 Note that this is not a full implementation of any version of OpenGL and is not
 endorsed by or associated with the Khronos Group or SGI.
