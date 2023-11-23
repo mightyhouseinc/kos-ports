@@ -1,4 +1,4 @@
-lsPORTNAME =        libjimtcl
+PORTNAME =           libjimtcl
 CONFIGURE_ARGS =     --without-ext="aio,zlib"
 MAKE_TARGET =        libjim.a
 HDR_INSTDIR =        jimtcl
