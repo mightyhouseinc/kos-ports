@@ -123,9 +123,9 @@ generatemp:
 
 fixincludes:
 	@for _file in $(MP_PORT_DIR)/*.h $(MP_PY_DIR)/*.h $(MP_RT_DIR)/*.h; do \
-		sed -ri 's/#include "(\S+)"/#include <micropython\/\1>/g' $$_file; \
+		sed -ri -e 's/#include "([^[:space:]]+)"/#include <micropython\/\1>/g' $$_file; \
 	done
-	@sed -i 's/<port\/mpconfigport_common.h>/<micropython\/port\/mpconfigport_common.h>/' mpconfigport.h
-	@sed -i 's/<mpconfigport.h>/<micropython\/mpconfigport.h>/' $(MP_PY_DIR)/mpconfig.h
+	@sed -i -e 's/<port\/mpconfigport_common.h>/<micropython\/port\/mpconfigport_common.h>/' mpconfigport.h
+	@sed -i -e 's/<mpconfigport.h>/<micropython\/mpconfigport.h>/' $(MP_PY_DIR)/mpconfig.h
 
 include ${KOS_PORTS}/scripts/lib.mk
