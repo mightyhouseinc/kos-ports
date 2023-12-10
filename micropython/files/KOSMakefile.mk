@@ -132,7 +132,7 @@ ifeq ($(OS),Windows_NT)
 	SED_FLAGS = >/dev/null 2>&1
 endif
 
-defaultall: | generatemp $(OBJS) subdirs linklib fixincludes
+defaultall: | generatemp $(OBJS) subdirs linklib fixincludes cleanupbeforeinstall
 
 # Generate MicroPython (with verbose option set to "no")
 generatemp: export MICROPYTHON_TOP = $(CURDIR)
@@ -148,5 +148,12 @@ fixincludes:
 	done
 	@sed -i -e 's/<port\/mpconfigport_common.h>/<micropython\/port\/mpconfigport_common.h>/' mpconfigport.h $(SED_FLAGS)
 	@sed -i -e 's/<mpconfigport.h>/<micropython\/mpconfigport.h>/' $(MP_PY_DIR)/mpconfig.h $(SED_FLAGS)
+
+# Remove source files (*.c/*.o) before installing the MicroPython port
+cleanupbeforeinstall:
+	@echo "Performing final clean-up before installation..."
+	@for _file in $(MP_PORT_DIR)/*.c $(MP_PY_DIR)/*.c $(MP_RT_DIR)/*.c $(MP_PORT_DIR)/*.o $(MP_PY_DIR)/*.o $(MP_RT_DIR)/*.o; do \
+		rm $$_file; \
+	done
 
 include ${KOS_PORTS}/scripts/lib.mk
