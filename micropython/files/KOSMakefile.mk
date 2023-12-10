@@ -115,17 +115,38 @@ CFLAGS += -I$(CURDIR)
 CFLAGS += -I$(MP_EMBED_DIR)
 CFLAGS += -I$(MP_PORT_DIR)
 
+# Windows specific
+ifeq ($(OS),Windows_NT)
+	# On Windows, the "python3" binary can exist but sometime it could not be usable here
+	# So we try if indeed, "python3" exists and returns something like "Python {version}".
+	# If yes, then we will use "python3" indeed, if not, we will try to use "python".
+	MP_PYTHON_CMD = python
+	MP_PYTHON3_USABLE := $(shell $(SHELL) -c 'python3 --version || :' 2>&1)
+	ifeq ($(shell echo $(MP_PYTHON3_USABLE) | cut -c-6),Python)
+		MP_PYTHON_CMD = python3
+	endif
+	MP_EMBED_FLAGS = PYTHON=$(MP_PYTHON_CMD)
+	
+	# "sed" can display some useless warning related to "permission denied".
+	# We will just hide this, as this is not relevant.
+	SED_FLAGS = >/dev/null 2>&1
+endif
+
 defaultall: | generatemp $(OBJS) subdirs linklib fixincludes
 
+# Generate MicroPython (with verbose option set to "no")
 generatemp: export MICROPYTHON_TOP = $(CURDIR)
 generatemp:
-	$(MAKE) -f ports/embed/embed.mk
+	$(MAKE) -f ports/embed/embed.mk V=0 $(MP_EMBED_FLAGS)
 
+# Alter header files and replace #include "{variable}" with #include <micropython/{variable}>
+# This will fixes some other headers as well.
 fixincludes:
+	@echo "Updating includes before installation..."
 	@for _file in $(MP_PORT_DIR)/*.h $(MP_PY_DIR)/*.h $(MP_RT_DIR)/*.h; do \
-		sed -ri -e 's/#include "([^[:space:]]+)"/#include <micropython\/\1>/g' $$_file; \
+		sed -ri -e 's/#include "([^[:space:]]+)"/#include <micropython\/\1>/g' $$_file $(SED_FLAGS); \
 	done
-	@sed -i -e 's/<port\/mpconfigport_common.h>/<micropython\/port\/mpconfigport_common.h>/' mpconfigport.h
-	@sed -i -e 's/<mpconfigport.h>/<micropython\/mpconfigport.h>/' $(MP_PY_DIR)/mpconfig.h
+	@sed -i -e 's/<port\/mpconfigport_common.h>/<micropython\/port\/mpconfigport_common.h>/' mpconfigport.h $(SED_FLAGS)
+	@sed -i -e 's/<mpconfigport.h>/<micropython\/mpconfigport.h>/' $(MP_PY_DIR)/mpconfig.h $(SED_FLAGS)
 
 include ${KOS_PORTS}/scripts/lib.mk
