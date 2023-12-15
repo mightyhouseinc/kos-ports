@@ -1,19 +1,19 @@
 # Port Metadata
 PORTNAME = 			libGL
-PORTVERSION = 		2.0.0
+PORTVERSION = 		1.0.0
 
-MAINTAINER =        Josh Pearson <ph3nom@users.sourceforge.net>
-LICENSE =           KOS License
-SHORT_DESC =        OpenGL (tm) like graphics library for KOS
+MAINTAINER =        Luke Benstead <kazade@gmail.com>
+LICENSE =           2-clause BSD (see LICENSE in the source distribution)
+SHORT_DESC =        GLdc, an OpenGL (tm) like graphics library for KOS
 
 # No dependencies beyond the base system.
 DEPENDENCIES =
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libgl
+GIT_REPOSITORY =    https://gitlab.com/simulant/GLdc.git
 
 TARGET =			libGL.a
-INSTALLED_HDRS =	include/gl.h include/glext.h include/glu.h include/glut.h
+INSTALLED_HDRS =	include/GL/gl.h include/GL/glext.h include/GL/glkos.h include/GL/glu.h
 HDR_COMDIR =		GL
 
 # KOS Distributed extras (to be copied into the build tree)
