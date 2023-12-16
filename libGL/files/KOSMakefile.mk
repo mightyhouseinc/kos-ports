@@ -8,11 +8,10 @@ KOS_CFLAGS += -DBACKEND_KOSPVR
 
 GLDC_VERSION=$(shell git describe --abbrev=4 --dirty --always --tags)
 
-defaultall: version $(OBJS)
+defaultall: version.c $(OBJS)
 
 # Generate version
-version:
-	@cp GL/version.c.in version.c
-	@sed -i "s/@GLDC_VERSION@/${GLDC_VERSION}/g" version.c
+version.c:
+	@sed "s/@GLDC_VERSION@/${GLDC_VERSION}/g" GL/version.c.in > version.c
 
 include ${KOS_PORTS}/scripts/lib.mk
