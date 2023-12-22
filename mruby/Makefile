@@ -2,7 +2,7 @@
 PORTNAME =          mruby
 PORTVERSION =       3.2.0
 
-MAINTAINER =        X
+MAINTAINER =        SiZiOUS <sizious@gmail.com>
 LICENSE =           MIT
 SHORT_DESC =        Lightweight Ruby
 
@@ -11,7 +11,7 @@ DEPENDENCIES =
 
 # What files we need to download, and where from.
 GIT_REPOSITORY =    https://github.com/mruby/mruby.git
-GIT_BRANCH =		master
+GIT_BRANCH =        master
 
 TARGET =            libmruby.a
 HDR_DIRECTORY =     build/$(KOS_ARCH)/include
