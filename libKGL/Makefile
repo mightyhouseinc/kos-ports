@@ -1,6 +1,6 @@
 # Port Metadata
-PORTNAME = 			libKGL
-PORTVERSION = 		2.0.0
+PORTNAME =          libKGL
+PORTVERSION =       2.0.0
 
 MAINTAINER =        Nobody
 LICENSE =           KOS License
@@ -12,11 +12,11 @@ DEPENDENCIES =
 # What files we need to download, and where from.
 GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libgl
 
-TARGET =			libKGL.a
-INSTALLED_HDRS =	include/gl.h include/glext.h include/glu.h include/glut.h
-HDR_COMDIR =		KGL
+TARGET =            libKGL.a
+INSTALLED_HDRS =    include/gl.h include/glext.h include/glu.h include/glut.h
+HDR_COMDIR =        KGL
 
 # KOS Distributed extras (to be copied into the build tree)
-KOS_DISTFILES =		KOSMakefile.mk
+KOS_DISTFILES =     KOSMakefile.mk
 
 include ${KOS_PORTS}/scripts/kos-ports.mk

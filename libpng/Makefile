@@ -17,7 +17,7 @@ INSTALLED_HDRS =    png.h pngconf.h readpng.h kospng.h pnglibconf.h
 HDR_INSTDIR =       png
 
 # KOS Distributed extras (to be copied into the build tree)
-KOS_DISTFILES =	    KOSMakefile.mk kos_texture.c kos_img.c readpng.h kospng.h \
+KOS_DISTFILES =     KOSMakefile.mk kos_texture.c kos_img.c readpng.h kospng.h \
                     readpng.c writepng.c
 
 include ${KOS_PORTS}/scripts/kos-ports.mk

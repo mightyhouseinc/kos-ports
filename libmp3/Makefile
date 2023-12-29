@@ -1,6 +1,6 @@
 # Port Metadata
-PORTNAME = 			libmp3
-PORTVERSION = 		2.0.0
+PORTNAME =          libmp3
+PORTVERSION =       2.0.0
 
 MAINTAINER =        Nobody
 LICENSE =           GPLv2+ (XingMP3) and KOS License (KOS Glue)
@@ -12,11 +12,11 @@ DEPENDENCIES =
 # What files we need to download, and where from.
 GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libmp3
 
-TARGET =			libmp3.a
-INSTALLED_HDRS =	include/sndmp3.h include/sndserver.h
+TARGET =            libmp3.a
+INSTALLED_HDRS =    include/sndmp3.h include/sndserver.h
 HDR_INSTDIR =       mp3
 
 # KOS Distributed extras (to be copied into the build tree)
-KOS_DISTFILES =		KOSMakefile.mk
+KOS_DISTFILES =     KOSMakefile.mk
 
 include ${KOS_PORTS}/scripts/kos-ports.mk
