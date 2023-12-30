@@ -32,24 +32,52 @@ fetch:
 	@if [ -z "${DOWNLOAD_FILES}" ] ; then \
 		cd dist ; \
 		if [ -n "${GIT_REPOSITORY}" ] ; then \
+			_repos="${GIT_REPOSITORY}" ; \
+		elif [ -n "${GIT_REPOSITORIES}" ] ; then \
+			_repos="${GIT_REPOSITORIES}" ; \
+		fi ; \
+		if [ -n "$$_repos" ] ; then \
 			if [ ! -d "${PORTNAME}-${PORTVERSION}" ] ; then \
-				echo "Fetching ${PORTNAME} from ${GIT_REPOSITORY} ..." ; \
-				if [ -n "${GIT_TAG}" ] ; then \
-				    git clone ${GIT_REPOSITORY} --branch ${GIT_TAG} --single-branch --depth 1 ${PORTNAME}-${PORTVERSION} ; \
-				elif [ -n "${GIT_BRANCH}" ] ; then \
-					git clone ${GIT_REPOSITORY} --branch ${GIT_BRANCH} --single-branch ${PORTNAME}-${PORTVERSION} ; \
-				else \
-					git clone ${GIT_REPOSITORY} ${PORTNAME}-${PORTVERSION} ; \
+				for _repo in $$_repos; do \
+					echo "Fetching ${PORTNAME} from $$_repo ..." ; \
+					if [ -n "${GIT_TAG}" ] ; then \
+						git clone $$_repo --branch ${GIT_TAG} --single-branch --depth 1 ${PORTNAME}-${PORTVERSION} ; \
+						if [ "$$?" -eq 0 ] ; then \
+							break; \
+						else \
+							rm -rf ${PORTNAME}-${PORTVERSION} ; \
+						fi ; \
+					elif [ -n "${GIT_BRANCH}" ] ; then \
+						git clone $$_repo --branch ${GIT_BRANCH} --single-branch ${PORTNAME}-${PORTVERSION} ; \
+						if [ "$$?" -eq 0 ] ; then \
+							break; \
+						else \
+							rm -rf ${PORTNAME}-${PORTVERSION} ; \
+						fi ; \
+					else \
+						git clone $$_repo ${PORTNAME}-${PORTVERSION} ; \
+						if [ "$$?" -eq 0 ] ; then \
+							break; \
+						else \
+							rm -rf ${PORTNAME}-${PORTVERSION} ; \
+						fi ; \
+					fi ; \
+				done ; \
+				if [ ! -d "${PORTNAME}-${PORTVERSION}" ] ; then \
+					echo "Failed to clone Git repository!" ; \
+					exit 127 ; \
 				fi ; \
 			elif [ -z "${GIT_TAG}" ] ; then \
-				echo "Updating ${PORTNAME} from ${GIT_REPOSITORY} ..." ; \
+				echo "Updating ${PORTNAME} from Git ..." ; \
 				cd ${PORTNAME}-${PORTVERSION} ; \
 				git pull ; \
 				cd .. ; \
 			fi ; \
 			if [ -z "${GIT_TAG}" -a -n "${GIT_CHANGESET}" ] ; then \
+				echo "Resetting to changeset ${GIT_CHANGESET}" ; \
 				cd ${PORTNAME}-${PORTVERSION} ; \
 				git reset --hard ${GIT_CHANGESET} ; \
+				cd .. ; \
 			fi ; \
 		elif [ -n "${SVN_REPOSITORY}" ] ; then \
 			if [ ! -d "${PORTNAME}-${PORTVERSION}" ] ; then \
