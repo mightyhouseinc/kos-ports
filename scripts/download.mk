@@ -1,7 +1,7 @@
 # kos-ports ##version##
 #
 # scripts/download.mk
-# Copyright (C) 2015 Lawrence Sebald
+# Copyright (C) 2015, 2023 Lawrence Sebald
 #
 
 fetch:

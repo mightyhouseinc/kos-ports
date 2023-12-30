@@ -1,7 +1,7 @@
 Most of the scripts (in the scripts/ and utils/ subdirectories) in the kos-ports
 distribution are distributed under the following two-clause BSD license:
 
-Copyright (C) 2015 Lawrence Sebald
+Copyright (C) 2015-2023 Lawrence Sebald
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
