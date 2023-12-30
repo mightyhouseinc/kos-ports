@@ -34,18 +34,20 @@ fetch:
 		if [ -n "${GIT_REPOSITORY}" ] ; then \
 			if [ ! -d "${PORTNAME}-${PORTVERSION}" ] ; then \
 				echo "Fetching ${PORTNAME} from ${GIT_REPOSITORY} ..." ; \
-				if [ -n "${GIT_BRANCH}" ] ; then \
+				if [ -n "${GIT_TAG}" ] ; then \
+				    git clone ${GIT_REPOSITORY} --branch ${GIT_TAG} --single-branch --depth 1 ${PORTNAME}-${PORTVERSION} ; \
+				elif [ -n "${GIT_BRANCH}" ] ; then \
 					git clone ${GIT_REPOSITORY} --branch ${GIT_BRANCH} --single-branch ${PORTNAME}-${PORTVERSION} ; \
 				else \
 					git clone ${GIT_REPOSITORY} ${PORTNAME}-${PORTVERSION} ; \
 				fi ; \
-			else \
+			elif [ -z "${GIT_TAG}" ] ; then \
 				echo "Updating ${PORTNAME} from ${GIT_REPOSITORY} ..." ; \
 				cd ${PORTNAME}-${PORTVERSION} ; \
 				git pull ; \
 				cd .. ; \
 			fi ; \
-			if [ -n "${GIT_CHANGESET}" ] ; then \
+			if [ -z "${GIT_TAG}" -a -n "${GIT_CHANGESET}" ] ; then \
 				cd ${PORTNAME}-${PORTVERSION} ; \
 				git reset --hard ${GIT_CHANGESET} ; \
 			fi ; \
