@@ -9,7 +9,7 @@ SHORT_DESC =        Simple (mostly 2D) game API library
 DEPENDENCIES =      libpng libjpeg libkmg
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libparallax \
+GIT_REPOSITORIES =  git://git.code.sf.net/p/cadcdev/libparallax \
                     https://github.com/KallistiOS/libparallax.git
 
 TARGET =            libparallax.a

@@ -10,7 +10,7 @@ SHORT_DESC =        Opus audio playback library
 DEPENDENCIES =      opusfile
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libopusplay \
+GIT_REPOSITORIES =  git://git.code.sf.net/p/cadcdev/libopusplay \
                     https://github.com/KallistiOS/libopusplay.git
 
 TARGET =            libopusplay.a

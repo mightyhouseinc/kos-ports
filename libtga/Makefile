@@ -10,7 +10,7 @@ SHORT_DESC =        Library for decoding TGA images
 DEPENDENCIES =
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libtga \
+GIT_REPOSITORIES =  git://git.code.sf.net/p/cadcdev/libtga \
                     https://github.com/KallistiOS/libtga.git
 
 TARGET =            libtga.a
