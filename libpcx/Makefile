@@ -10,7 +10,8 @@ SHORT_DESC =        Library for decoding PCX images
 DEPENDENCIES =
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libpcx
+GIT_REPOSITORIES =  git://git.code.sf.net/p/cadcdev/libpcx \
+                    https://github.com/KallistiOS/libpcx.git
 
 TARGET =            libpcx.a
 INSTALLED_HDRS =    include/pcx.h

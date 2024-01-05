@@ -9,7 +9,8 @@ SHORT_DESC =        The KallistiOS shell (library)
 DEPENDENCIES =      libconio
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libkosh
+GIT_REPOSITORIES =  git://git.code.sf.net/p/cadcdev/libkosh \
+                    https://github.com/KallistiOS/libkosh.git
 
 TARGET =            libkosh.a
 INSTALLED_HDRS =    include/kosh.h
