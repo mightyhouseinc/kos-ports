@@ -9,7 +9,8 @@ SHORT_DESC =        C++ "scene graph" wrapper around libparallax
 DEPENDENCIES =      libparallax
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libtsunami
+GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libtsunami \
+                    https://github.com/KallistiOS/libtsunami.git
 
 TARGET =            libtsunami.a
 HDR_DIRECTORY =     include

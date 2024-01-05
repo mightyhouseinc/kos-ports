@@ -10,7 +10,8 @@ SHORT_DESC =        Console-like I/O library
 DEPENDENCIES =
 
 # What files we need to download, and where from.
-GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libconio
+GIT_REPOSITORY =    git://git.code.sf.net/p/cadcdev/libconio \
+                    https://github.com/KallistiOS/libconio.git
 
 TARGET =            libconio.a
 INSTALLED_HDRS =    include/conio.h include/draw.h include/input.h
