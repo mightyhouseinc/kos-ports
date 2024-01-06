@@ -10,7 +10,7 @@ import hashlib
 
 def calc_sha256(fn):
     h = hashlib.sha256()
-    with open('dist/' + fn, 'rb') as f:
+    with open(f'dist/{fn}', 'rb') as f:
         buf = f.read(1024*1024)
         while len(buf) > 0:
             h.update(buf)
@@ -20,7 +20,7 @@ def calc_sha256(fn):
 
 def file_size(fn):
     try:
-        return os.path.getsize('dist/' + fn)
+        return os.path.getsize(f'dist/{fn}')
     except:
         return None
 
@@ -46,19 +46,19 @@ with open('distinfo', 'r') as f:
         # Validate that everything matches the distinfo for this file.
         size = file_size(fn)
 
-        if size == None:
-            sys.exit('File not found: %s' % (fn,))
+        if size is None:
+            sys.exit(f'File not found: {fn}')
 
         if size != int(l2t[3]):
             sys.exit('File "%s" is incorrect size (expected %d)' % (fn, int(l2t[3])))
 
         sha = calc_sha256(fn)
 
-        if sha == None:
-            sys.exit('File not found: %s' % (fn, ))
+        if sha is None:
+            sys.exit(f'File not found: {fn}')
 
         if sha != l1t[3]:
-            sys.exit('File "%s" is corrupt!' % (fn, ))
+            sys.exit(f'File "{fn}" is corrupt!')
 
-        print('File "%s" is ok.' % (fn, ))
+        print(f'File "{fn}" is ok.')
 sys.exit(0)
