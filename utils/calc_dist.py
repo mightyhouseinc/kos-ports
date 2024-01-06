@@ -16,5 +16,5 @@ for arg in sys.argv[1:]:
         while len(buf) > 0:
             h.update(buf)
             buf = f.read(1024*1024)
-        print("SHA256 (%s) = %s" % (arg, h.hexdigest()))
+        print(f"SHA256 ({arg}) = {h.hexdigest()}")
         print("SIZE (%s) = %d" % (arg, os.path.getsize(arg)))
